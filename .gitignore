@@ -23,4 +23,4 @@
 *.factorypath
 
 target/
-*.idea
+.idea/
