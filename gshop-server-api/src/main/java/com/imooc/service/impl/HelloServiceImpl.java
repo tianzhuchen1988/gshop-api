@@ -1,6 +1,6 @@
 package com.imooc.service.impl;
 
-import com.imooc.dto.Hello;
+import com.imooc.dataobject.Hello;
 import com.imooc.repository.HelloRepository;
 import com.imooc.service.IHelloService;
 import org.springframework.beans.factory.annotation.Autowired;
