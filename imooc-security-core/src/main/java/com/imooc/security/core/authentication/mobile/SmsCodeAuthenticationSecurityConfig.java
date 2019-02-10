@@ -36,7 +36,7 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
-	@Autowired
+	@Autowired(required = false)
 	private PersistentTokenRepository persistentTokenRepository;
 	
 	/* (non-Javadoc)
@@ -49,9 +49,11 @@ public class SmsCodeAuthenticationSecurityConfig extends SecurityConfigurerAdapt
 		smsCodeAuthenticationFilter.setAuthenticationManager(http.getSharedObject(AuthenticationManager.class));
 		smsCodeAuthenticationFilter.setAuthenticationSuccessHandler(imoocAuthenticationSuccessHandler);
 		smsCodeAuthenticationFilter.setAuthenticationFailureHandler(imoocAuthenticationFailureHandler);
-		String key = UUID.randomUUID().toString();
-		smsCodeAuthenticationFilter.setRememberMeServices(new PersistentTokenBasedRememberMeServices(key, userDetailsService, persistentTokenRepository));
-		
+		if(persistentTokenRepository != null){
+			String key = UUID.randomUUID().toString();
+			smsCodeAuthenticationFilter.setRememberMeServices(new PersistentTokenBasedRememberMeServices(key, userDetailsService, persistentTokenRepository));
+		}
+
 		SmsCodeAuthenticationProvider smsCodeAuthenticationProvider = new SmsCodeAuthenticationProvider();
 		smsCodeAuthenticationProvider.setUserDetailsService(userDetailsService);
 		

@@ -52,6 +52,7 @@
         <module>imooc-security-core</module>
         <module>imooc-security-demo</module>
         <module>imooc-security-authorize</module>
+        <module>gshop-server-api</module>
     </modules>
 
     
