@@ -26,4 +26,10 @@ public class HelloController {
         return ResultVOUtil.success(iHelloService.findOne(id));
     }
 
+    @GetMapping("count")
+    public Integer messageCount(){
+        return 5;
+    }
+
+
 }

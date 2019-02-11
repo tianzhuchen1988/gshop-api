@@ -12,7 +12,6 @@ public class GshopServiceException extends RuntimeException{
 
     public GshopServiceException(ResultEnum resultEnum) {
         super(resultEnum.getMessage());
-
         this.code = resultEnum.getCode();
     }
 
