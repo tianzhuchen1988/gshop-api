@@ -31,5 +31,17 @@ public class HelloController {
         return 5;
     }
 
+    @GetMapping("syncTest")
+    public void syncTest(){
+        for(int i = 0; i< 10000; i++){
+            new Thread(){
+                public void run(){
+                    iHelloService.syncTest();
+                }
+            }.start();
+        }
+
+    }
+
 
 }
